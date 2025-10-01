@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot Wheels Ramo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f6f6f6; }
+    #splash, #ramo-logo {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 1s;
+    }
+    #splash img, #ramo-logo img { width: 420px; max-width: 90vw; }
+    #main-content { display: none; padding: 24px; text-align: center; }
+    .question-btns {
+      margin-top: 38px;
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+    .btn {
+      padding: 14px 30px;
+      font-size: 22px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #ff7800;
+      color: #fff;
+      box-shadow: 0 2px 8px #3333;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #e65100; }
+    #carritos-grid {
+      margin: 42px auto 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      justify-items: center;
+    }
+    .carrito-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 10px #0002;
+      padding: 16px 8px;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s;
+    }
+    .carrito-card:hover { box-shadow: 0 8px 28px #ff780033; }
+    .carrito-card img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .carrito-title { font-weight: bold; font-size: 18px; margin-bottom: 3px; color: #ff7800; }
+    #no-content {
+      display: none;
+      margin-top: 44px;
+      text-align: center;
+    }
+    #no-content img {
+      width: 260px;
+      max-width: 90vw;
+      margin-bottom: 14px;
+    }
+    #no-content p {
+      font-size: 22px;
+      color: #444;
+    }
+    /* Responsive for mobile */
+    @media (max-width: 600px) {
+      #carritos-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .carrito-card { width: 98vw; padding: 8px 4px; }
+      .carrito-card img { width: 98vw; max-width: 180px; }
+      #splash img, #ramo-logo img { width: 90vw; }
+      #no-content img { width: 90vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla de bienvenida -->
+  <div id="splash">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Hot_Wheels_logo.svg/2560px-Hot_Wheels_logo.svg.png" alt="Hot Wheels Logo">
+  </div>
+
+  <!-- Logo de transición al ramo -->
+  <div id="ramo-logo" style="display:none;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Hot_Wheels_logo.svg/2560px-Hot_Wheels_logo.svg.png" alt="Hot Wheels Logo">
+  </div>
+
+  <!-- Contenido principal -->
+  <div id="main-content">
+    <h1>¿Quieres ver el ramo de Hot Wheels?</h1>
+    <div class="question-btns">
+      <button class="btn" onclick="showRamoLogo()">Sí</button>
+      <button class="btn" onclick="showNoContent()">No</button>
+    </div>
+    <div id="carritos-grid" style="display:none;">
+      <div class="carrito-card">
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-DW8oFQTxgQhYpQHw9j0zTh5h/user-nZSnR2bVvH0G7oYYqjK4KjQJ/img-1i3jYwB7IUuV3nGqEvOtrjvE.png" alt="Mighty K">
+        <div class="carrito-title">Mighty K</div>
+      </div>
+      <div class="carrito-card">
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-DW8oFQTxgQhYpQHw9j0zTh5h/user-nZSnR2bVvH0G7oYYqjK4KjQJ/img-cqj0vT8c1cQpT2Q2a59v5l9B.png" alt="Arkham Asylum Batmobile">
+        <div class="carrito-title">Arkham Asylum Batmobile</div>
+      </div>
+      <div class="carrito-card">
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-DW8oFQTxgQhYpQHw9j0zTh5h/user-nZSnR2bVvH0G7oYYqjK4KjQJ/img-2oQNH0a8GkJdJtKF0KxU2yJh.png" alt="Nissan Z Proto">
+        <div class="carrito-title">Nissan Z Proto</div>
+      </div>
+      <div class="carrito-card">
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-DW8oFQTxgQhYpQHw9j0zTh5h/user-nZSnR2bVvH0G7oYYqjK4KjQJ/img-7oS9jf8uO7C6H6aQxj1kF3nK.png" alt="Porsche 911">
+        <div class="carrito-title">Porsche 911</div>
+      </div>
+    </div>
+    <div id="no-content">
+      <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-DW8oFQTxgQhYpQHw9j0zTh5h/user-nZSnR2bVvH0G7oYYqjK4KjQJ/img-2Gd5dXJH1bP3kP9wV6G3T4hH.png" alt="Sad Phone">
+      <p>¡Qué triste! No quisiste ver el ramo 😢</p>
+    </div>
+  </div>
+
+  <script>
+    // Splash al inicio
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById('splash').style.opacity = 0;
+        setTimeout(function(){
+          document.getElementById('splash').style.display = 'none';
+          document.getElementById('main-content').style.display = 'block';
+        }, 1000);
+      }, 1800);
+    };
+
+    // Logo transición y muestra los carritos
+    function showRamoLogo() {
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('ramo-logo').style.display = 'flex';
+      setTimeout(function() {
+        document.getElementById('ramo-logo').style.opacity = 0;
+        setTimeout(function(){
+          document.getElementById('ramo-logo').style.display = 'none';
+          document.getElementById('main-content').style.display = 'block';
+          document.getElementById('carritos-grid').style.display = 'grid';
+          document.getElementById('no-content').style.display = 'none';
+        }, 1000);
+      }, 1600);
+    }
+
+    // Muestra el contenido triste
+    function showNoContent() {
+      document.getElementById('carritos-grid').style.display = 'none';
+      document.getElementById('no-content').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
